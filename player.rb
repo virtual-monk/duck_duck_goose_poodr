@@ -35,5 +35,8 @@ class Player
 		self.role = "it"
 		self.location = 20
 	end
+	def set_goose
+		self.role = "goose"
+	end
 	private
 end

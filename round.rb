@@ -1,24 +1,21 @@
 class Round
-	attr_reader :it, :goose, :players, :game
-	def initialize(game)
-		@game = game
-		@players = game.players
+	attr_reader :players
+	attr_accessor :loser
+	def initialize(players:)
+		@players = players
+		@loser = nil
+		chase
 	end
 
-	def self.play_round(game)
-		round = Round.new(game)
-		round.race
-	end
-
-	def race
+	def chase
 		puts "#{goose.first_name} chases #{it.first_name}"
 		until  goose_wins || it_wins
 			it.location += it.speed
 			goose.location += goose.speed
 		end
 	end
-	private
 
+	private
 	def it_wins
 		if it.location >= 360 
 			results(loser: goose, winner: it )
@@ -42,9 +39,8 @@ class Round
 	end
 
 	def results(winner:, loser:)
-		puts "#{winner.first_name} wins!!!"
-		puts "#{loser.first_name} loses!!!"
-		game.reset_players(loser)
+		GameMessage.round_results(winner: winner, loser: loser)
+		self.loser = loser
 	end
 
 	def find(role)
@@ -59,15 +55,13 @@ class Round
 
 	def assign_it
 		it = players.sample
-		it.role = "it"
-		it.location = 20
+		it.set_it
 		return it
 	end
 
 	def assign_goose
 		goose = ducks.sample
-		goose.role = "goose"
-		goose.location = 0
+		goose.set_goose
 		return goose
 	end
 end
