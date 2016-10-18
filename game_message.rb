@@ -43,7 +43,7 @@ class GameMessage
   def self.choose_goose(ducks)
     puts "Choose your goose:"
     ducks.each do |duck|
-      puts duck.first_name
+      puts duck.first_name.capitalize
     end
   end
 end

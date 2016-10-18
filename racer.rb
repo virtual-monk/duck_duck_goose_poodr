@@ -16,6 +16,6 @@ class Racer
   end
 
   def choose_goose(ducks)
-    goose = player.choose_goose(ducks)
+    player.choose_goose(ducks)
   end
 end

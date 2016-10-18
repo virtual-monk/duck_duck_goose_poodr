@@ -40,9 +40,15 @@ class Game
   	types = [HumanPlayer, ComputerPlayer]
   	types.each do |type|
 	  	message.how_many_players(type)
-	  	type.adding_players(players: self.players, player_count: gets.chomp.to_i)
-  	end
-    new_round
+		  how_many = gets.chomp.to_i
+	    (1..how_many).each do |number|
+		    puts "Enter player #{number}'s name"
+		    first_name = gets.chomp
+		    players << type.new(first_name: first_name)
+		    puts "#{first_name} added to the game"
+	  	end
+	  end
+	  new_round
   end
 
   def player_one

@@ -46,7 +46,6 @@ class Round
   def assign_it
     player = players.sample
     it = Racer.new(player: player, location: 20)
-    return it
   end
 
   def assign_goose
