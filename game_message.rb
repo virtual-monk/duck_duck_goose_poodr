@@ -1,41 +1,49 @@
 class GameMessage
-	def initialize()
+  def self.intro
+    puts "Hey you, wanna play Duck Duck Goose?"
+  end
 
-	end
-	def self.intro
-		puts "Hey you, wanna play Duck Duck Goose?(Yes or No)"
-	end
+  def self.welcome(player)
+    puts "Welcome #{player.first_name.capitalize}"
+  end
 
-	def self.welcome(player)
-		puts "Welcome #{player.first_name}"
-		puts "How many players do you want to play against?"
-	end
+  def self.how_many_players(type)
+    puts "How many #{type}s do you want to play against?"
+  end
 
-	def self.play_again?
-		puts "Would you like to play again?(Yes or No)"
-	end
+  def self.play_again?
+    puts "Would you like to play again?"
+  end
 
-	def self.players_name?
-		puts "What's your name?"
-	end
+  def self.players_name?
+    puts "What's your name?"
+  end
 
-	def self.number_of_players
-		puts "How many players will there be?"
-	end
+  def self.end_game
+    puts "T'was fun while it lasted. Later, playa!"
+  end
 
-	def self.end_game
-		puts "T'was fun while it lasted. Later, playa!"
-	end
+  def self.round_results(winner:, loser:)
+    puts "#{winner.first_name.capitalize} wins!!!"
+    puts "#{loser.first_name.capitalize} loses!!!"
+  end
 
-	def self.round_results(winner:, loser:)
-		puts "#{winner.first_name} wins!!!"
-		puts "#{loser.first_name} loses!!!"
-	end
-	
-	def self.choose_goose(player:, ducks:)
-		puts "Choose your goose:"
-		ducks.each do |duck|
-			puts duck.first_name 
-		end
-	end
+  def self.unrecognized_input
+    puts "Unable to recognize input"
+  end
+
+  def self.chase(goose, it)
+    puts "#{goose.first_name.capitalize} chases #{it.first_name.capitalize}"
+  end
+
+  def self.is_it(player)
+  	puts "#{player.first_name.capitalize} is It!"
+  end
+
+  def self.choose_goose(ducks)
+    puts "Choose your goose:"
+    ducks.each do |duck|
+      puts duck.first_name
+    end
+  end
 end
