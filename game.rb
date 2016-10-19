@@ -1,60 +1,79 @@
 class Game
-	attr_reader :players
-	def initialize()
-		GameMessage.intro
-		@players = []
-	end
+  attr_reader :players
+  attr_accessor :it
 
-	def start_game?(response)
-		if response.downcase == "yes"
-			player_one
-		else
-			end_game
-		end
-	end
+  def initialize()
+    @players = []
+    @it = nil
+  end
 
-	def play_again?
-		GameMessage.play_again?
-		#possible Response class below
-		if gets.chomp == "yes"
-			play_round
-		else
-			end_game
-		end
-	end
+  def start_game?
+    response = Response.check(gets.chomp)
+    case response
+    when "affirmative"
+      player_one
+    when "negative"
+      message.end_game
+    else
+      puts response
+      start_game?
+    end
+  end
 
-	private
-	def play_round
-		round = Round.new(players: self.players)
-		reset_players(round.loser)
-	end
+  def new_round
+    round = Round.new(players: players, it: it)
+    round.begin
+    play_again?(round.loser)
+  end
 
-	def reset_players(loser)
-		reset_ducks
-		loser.set_it
-		play_again?
-	end
+  private
+  def message
+    GameMessage
+  end
 
-	def player_one
-		GameMessage.players_name?
-		player = Player.new(first_name: gets.chomp, human: true)
-		self.players << player
-		welcome(player)
-	end
+  def welcome(player)
+    message.welcome(player)
+    add_players
+  end
 
-	def welcome(player)
-		GameMessage.welcome(player)
-		Player.adding_players(game: self, player_count: gets.chomp.to_i)
-		play_round
-	end
+  def add_players
+  	types = [HumanPlayer, ComputerPlayer]
+  	types.each do |type|
+	  	message.how_many_players(type)
+		  how_many = gets.chomp.to_i
+	    (1..how_many).each do |number|
+        add_player(number, type)
+      end
+    end
+    new_round
+  end
 
-	def end_game
-		GameMessage.end_game
-	end
-	
-	def reset_ducks
-		players.each do |duck|
-			duck.reset
-		end
-	end
+  def add_player(number, type)
+    puts "Enter player #{number}'s name"
+    first_name = gets.chomp
+    players << type.new(first_name: first_name)
+    puts "#{first_name} added to the game"
+  end
+
+  def player_one
+    message.players_name?
+    player = HumanPlayer.new(first_name: gets.chomp)
+    self.players << player
+    welcome(player)
+  end
+
+  def play_again?(loser)
+    message.play_again?
+    response = Response.check(gets.chomp)
+    case response
+    when "affirmative"
+      loser.new_round(self)
+      new_round
+    when "negative"
+      message.end_game
+    else
+      puts response
+      play_again?(loser)
+    end
+  end
 end
