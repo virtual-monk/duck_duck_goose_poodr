@@ -42,13 +42,17 @@ class Game
 	  	message.how_many_players(type)
 		  how_many = gets.chomp.to_i
 	    (1..how_many).each do |number|
-		    puts "Enter player #{number}'s name"
-		    first_name = gets.chomp
-		    players << type.new(first_name: first_name)
-		    puts "#{first_name} added to the game"
-	  	end
-	  end
-	  new_round
+        add_player(number, type)
+      end
+    end
+    new_round
+  end
+
+  def add_player(number, type)
+    puts "Enter player #{number}'s name"
+    first_name = gets.chomp
+    players << type.new(first_name: first_name)
+    puts "#{first_name} added to the game"
   end
 
   def player_one
