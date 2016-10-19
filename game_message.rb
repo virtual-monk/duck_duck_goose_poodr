@@ -4,7 +4,7 @@ class GameMessage
   end
 
   def self.welcome(player)
-    puts "Welcome #{player.first_name.capitalize}"
+    puts "Welcome #{player.capitalize}"
   end
 
   def self.how_many_players(type)
