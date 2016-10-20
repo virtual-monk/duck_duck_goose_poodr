@@ -11,5 +11,6 @@ require_relative "./racer"
 require_relative "./response"
 
 GameMessage.intro
+binding.pry
 game = Game.new
 game.start_game?
