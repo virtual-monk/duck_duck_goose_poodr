@@ -37,8 +37,8 @@ class Game
   end
 
   def add_players
-    types = [HumanPlayer, ComputerPlayer]
-    types.each do |type|
+    player_types = [HumanPlayer, ComputerPlayer]
+    player_types.each do |type|
       message.how_many_players(type)
       how_many = gets.chomp.to_i
       (1..how_many).each do |number|
@@ -51,7 +51,7 @@ class Game
   def add_player(type)
     puts "Enter player's name"
     first_name = gets.chomp
-    players << type.new(first_name: first_name.downcase)
+    players << type.new(first_name: first_name)
     puts "#{first_name.capitalize} added to the game"
     return first_name
   end
@@ -59,7 +59,7 @@ class Game
   def player_one
     message.players_name?
     player = add_player(HumanPlayer)
-    welcome(player)
+    welcome(player.capitalize)
   end
 
   def play_again?(loser)

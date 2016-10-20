@@ -12,12 +12,20 @@ class Round
   def begin
     message.chase(goose, it)
     until  goose_wins || it_wins
+      mystery_box
       it.location += it.distance
       goose.location += goose.distance
     end
   end
 
   private
+  def mystery_box
+    racers = [it, goose]
+    attacker = racers.shuffle!.pop
+    victim = racers.first
+    box = MysteryBox.new(attacker: attacker, victim: victim )
+  end
+
   def it_wins
     if it.location >= 360
       results(loser: goose, winner: it )

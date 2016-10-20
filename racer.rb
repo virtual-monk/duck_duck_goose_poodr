@@ -14,7 +14,7 @@ class Racer
   end
 
   def new_round(game)
-    self.location = 20
+    self.location = 30
     game.it = self
   end
 

@@ -4,5 +4,4 @@ class ComputerPlayer < Player
 		player = ducks.sample
     goose = Racer.new(player: player)
   end
-
 end
