@@ -4,7 +4,7 @@ class NoisyCricket < PowerUps
   end
 
   def hit
-    puts "Hit: Those aliens didn't stand a chance. #{attacker.first_name} blasts through them"
+    puts "Hit: #{victim.first_name} didn't stand a chance. #{attacker.first_name} blasts through them like an alien roach"
   end
 
   def damage

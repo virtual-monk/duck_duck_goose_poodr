@@ -1,6 +1,6 @@
 class AcmeTnt < PowerUps
   def misfire
-    puts "Misfire: Oh snap, the road runner moved the TNT behind #{attacker.first_name}"
+    puts "Misfire: Oh snap, #{victim.first_name} moved the TNT behind #{attacker.first_name}"
   end
 
   def hit

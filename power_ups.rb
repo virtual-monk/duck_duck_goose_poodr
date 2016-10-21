@@ -31,6 +31,6 @@ class PowerUps
   end
 
   def damage
-    rand(10..30)
+    rand(1..15)
   end
 end

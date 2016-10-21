@@ -1,10 +1,10 @@
 class Ring < PowerUps
   def misfire
-    puts "Misfire: SHIT! Nazgul everywhere. #{attacker.first_name} is attacked"
+    puts "Misfire: NOOO! Nazgul everywhere! #{attacker.first_name} is attacked"
   end
 
   def hit
-    puts "Hit: #{attacker.first_name} moves stealhly with the cover of the PRECIOUSSSSS"
+    puts "Hit: #{attacker.first_name} moves stealhly with the cover of the PRECIOUS"
   end
 
   def damage
