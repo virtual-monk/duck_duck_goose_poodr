@@ -1,4 +1,5 @@
 class Game
+  include Response
   attr_reader :players
   attr_accessor :it
 
@@ -8,7 +9,7 @@ class Game
   end
 
   def start_game?
-    response = Response.check(gets.chomp)
+    response = check(gets.chomp)
     case response
     when "affirmative"
       player_one
@@ -40,7 +41,7 @@ class Game
     player_types = [HumanPlayer, ComputerPlayer]
     player_types.each do |type|
       message.how_many_players(type)
-      how_many = gets.chomp.to_i
+      how_many = check_number(gets.chomp) until !how_many.nil?
       (1..how_many).each do |number|
         add_player(type)
       end
@@ -64,7 +65,7 @@ class Game
 
   def play_again?(loser)
     message.play_again?
-    response = Response.check(gets.chomp)
+    response = check(gets.chomp)
     case response
     when "affirmative"
       loser.new_round(self)
