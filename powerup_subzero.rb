@@ -1,6 +1,6 @@
 class Subzero < PowerUps
   def misfire
-    puts "Misfire: The frost back fires and freezes #{attacker.first_name} feet to the ground..."
+    puts "Misfire: The frost backfires and freezes #{attacker.first_name}'s' feet to the ground..."
   end
 
   def hit
