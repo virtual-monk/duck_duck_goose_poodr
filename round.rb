@@ -23,7 +23,12 @@ class Round
     racers = [it, goose]
     attacker = racers.shuffle!.pop
     victim = racers.first
-    box = MysteryBox.new(attacker: attacker, victim: victim )
+    power_up = power_ups.sample.new(attacker: attacker, victim: victim)
+    power_up.results
+  end
+
+  def power_ups
+    [Delorean, AcmeTnt, Subzero, NoisyCricket, MarioStar, Ring]
   end
 
   def it_wins
