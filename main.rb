@@ -2,6 +2,9 @@ require 'rubygems'
 require 'bundler/setup'
 Bundler.require(:default)
 require_relative "./player"
+require_relative "./pickable"
+require_relative "./mystery_box"
+require_relative "./checkable_number"
 require_relative "./response"
 require_relative "./human_player"
 require_relative "./computer_player"

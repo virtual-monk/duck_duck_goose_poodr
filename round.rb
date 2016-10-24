@@ -23,12 +23,8 @@ class Round
     racers = [it, goose]
     attacker = racers.shuffle!.pop
     victim = racers.first
-    power_up = power_ups.sample.new(attacker: attacker, victim: victim)
-    power_up.results
-  end
-
-  def power_ups
-    [Delorean, AcmeTnt, Subzero, NoisyCricket, MarioStar, Ring]
+    mystery_box = MysteryBox.new(attacker: attacker, victim: victim)
+    mystery_box.results
   end
 
   def it_wins
@@ -58,11 +54,11 @@ class Round
 
   def assign_it
     player = players.sample
-    it = Racer.new(player: player, location: 20)
+    it = Racer.new(player: player, location: 30)
   end
 
   def assign_goose
-  	goose = it.choose_goose(ducks)
+  	goose = it.chooses_goose(ducks)
   end
 
   def message

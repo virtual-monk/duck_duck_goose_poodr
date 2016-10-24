@@ -46,4 +46,13 @@ class GameMessage
       puts duck.first_name
     end
   end
+
+  def self.choose_powerup(powerups:, attacker:)
+    puts "POWER UP GRAB BAG"
+    puts "#{attacker.first_name}, Choose your powerup!"
+    powerups.each do |powerup|
+      puts "#{powerup.type}"
+      puts "    power: #{powerup.damage_to_s}"
+    end
+  end
 end

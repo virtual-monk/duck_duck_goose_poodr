@@ -7,15 +7,17 @@ class PowerUps
   end
 
   def results
-    d20 = rand(20)
+    roll = rand(20)
     puts "#{attacker.first_name} uses the #{type}"
-    if d20 > 10
+    if roll > 10
       hit
-      victim.location -= damage
     else
       misfire
-      attacker.location -= (damage/2)
     end
+  end
+
+  def listed_attribute
+    type.capitalize
   end
 
   def post_initialize
@@ -32,5 +34,9 @@ class PowerUps
 
   def damage
     rand(1..15)
+  end
+
+  def damage_to_s
+    "1-15"
   end
 end

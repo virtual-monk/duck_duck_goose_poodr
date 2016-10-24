@@ -1,5 +1,6 @@
 class Racer
-  attr_accessor :location, :player
+  attr_reader :player
+  attr_accessor :location
   def initialize(player:, location: 0)
     @location = location
     @player = player
@@ -13,12 +14,16 @@ class Racer
     player.first_name
   end
 
+  def human?
+    player.human?
+  end
+
   def new_round(game)
     self.location = 30
     game.it = self
   end
 
-  def choose_goose(ducks)
-    player.choose_goose(ducks)
+  def chooses_goose(ducks)
+    player.chooses_goose(ducks)
   end
 end
