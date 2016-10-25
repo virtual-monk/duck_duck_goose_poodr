@@ -3,18 +3,13 @@ class Player
 
   def initialize(args)
     @first_name = args[:first_name].capitalize
-    post_initialize(args)
   end
 
-  def choose_goose(ducks)
+  def choose_goose
     raise "#{self.class} needs to define choose_goose method"
   end
 
   def listed_attribute
     first_name
-  end
-
-  def post_initialize(args)
-    nil
   end
 end

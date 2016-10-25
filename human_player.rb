@@ -1,11 +1,22 @@
 class HumanPlayer < Player
-  def choose_goose(ducks)
-    GameMessage.is_it(self)
+  include Pickable
+
+  def chooses_goose(ducks)
+    message.is_it(self)
     player = nil
-    until !player.nil?
-      GameMessage.choose_goose(ducks)
-      player = Response.pick_from_list(list: ducks, response: gets.chomp)
+    until player
+      message.choose_goose(ducks)
+      player = pick_from_list(list: ducks, response: gets.chomp)
     end
     goose = Racer.new(player: player)
+  end
+
+  def human?
+    true
+  end
+
+  private
+  def message
+    GameMessage
   end
 end

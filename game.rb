@@ -1,4 +1,6 @@
 class Game
+  include SerializableResponse
+  include CheckableNumber
   attr_reader :players
   attr_accessor :it
 
@@ -8,7 +10,7 @@ class Game
   end
 
   def start_game?
-    response = Response.check(gets.chomp)
+    response = check(gets.chomp.downcase)
     case response
     when "affirmative"
       player_one
@@ -39,13 +41,17 @@ class Game
   def add_players
     player_types = [HumanPlayer, ComputerPlayer]
     player_types.each do |type|
-      message.how_many_players(type)
-      how_many = gets.chomp.to_i
-      (1..how_many).each do |number|
-        add_player(type)
-      end
+      add_players_by_type(type)
     end
     new_round
+  end
+
+  def add_players_by_type(type)
+    message.how_many_players(type)
+    how_many = check_number(gets.chomp.downcase) until how_many
+    (1..how_many).each do |number|
+      add_player(type)
+    end
   end
 
   def add_player(type)
@@ -64,7 +70,7 @@ class Game
 
   def play_again?(loser)
     message.play_again?
-    response = Response.check(gets.chomp)
+    response = check(gets.chomp.downcase)
     case response
     when "affirmative"
       loser.new_round(self)
