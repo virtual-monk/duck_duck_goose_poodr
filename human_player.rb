@@ -1,19 +1,11 @@
-class HumanPlayer
-  attr_reader :first_name
-
-  def initialize(first_name:)
-    @first_name = first_name
-  end
-
+class HumanPlayer < Player
   def choose_goose(ducks)
     GameMessage.is_it(self)
     player = nil
     until !player.nil?
       GameMessage.choose_goose(ducks)
-      goose_name = gets.chomp
-      player = ducks.select { |duck| duck.first_name == goose_name }.first
+      player = Response.pick_from_list(list: ducks, response: gets.chomp)
     end
     goose = Racer.new(player: player)
   end
-
 end

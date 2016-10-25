@@ -4,7 +4,7 @@ class GameMessage
   end
 
   def self.welcome(player)
-    puts "Welcome #{player.first_name.capitalize}"
+    puts "Welcome #{player}"
   end
 
   def self.how_many_players(type)
@@ -24,8 +24,8 @@ class GameMessage
   end
 
   def self.round_results(winner:, loser:)
-    puts "#{winner.first_name.capitalize} wins!!!"
-    puts "#{loser.first_name.capitalize} loses!!!"
+    puts "#{winner.first_name} wins!!!"
+    puts "#{loser.first_name} loses!!!"
   end
 
   def self.unrecognized_input
@@ -33,17 +33,17 @@ class GameMessage
   end
 
   def self.chase(goose, it)
-    puts "#{goose.first_name.capitalize} chases #{it.first_name.capitalize}"
+    puts "#{goose.first_name} chases #{it.first_name}"
   end
 
   def self.is_it(player)
-  	puts "#{player.first_name.capitalize} is It!"
+  	puts "#{player.first_name} is It!"
   end
 
   def self.choose_goose(ducks)
     puts "Choose your goose:"
     ducks.each do |duck|
-      puts duck.first_name.capitalize
+      puts duck.first_name
     end
   end
 end
