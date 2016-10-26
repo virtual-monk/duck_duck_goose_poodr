@@ -10,9 +10,11 @@ class Round
   end
 
   def begin
+    message.speed_bonus(it, goose)
     message.chase(goose, it)
     until  goose_wins || it_wins
       mystery_box
+      message.racers_location(it, goose)
       it.location += it.distance
       goose.location += goose.distance
     end

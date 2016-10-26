@@ -3,6 +3,8 @@ require 'bundler/setup'
 Bundler.require(:default)
 require_relative "./player"
 require_relative "./pickable"
+require_relative "./gear_factory"
+require_relative "./supplies"
 require_relative "./mystery_box"
 require_relative "./checkable_number"
 require_relative "./response"

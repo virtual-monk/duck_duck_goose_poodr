@@ -47,6 +47,16 @@ class GameMessage
     end
   end
 
+  def self.speed_bonus(it, goose)
+    puts "#{it.first_name} gears up with #{it.gear_names} for an added speed bonus of #{it.speed_bonus}"
+    puts "#{goose.first_name} gears up with #{goose.gear_names} for an added speed bonus of #{goose.speed_bonus}"
+  end
+
+  def self.racers_location(it, goose)
+    puts "IT: #{it.first_name}'s location is #{it.location}"
+    puts "GOOSE: #{goose.first_name}'s location is #{goose.location}"
+  end
+
   def self.choose_powerup(powerups:, attacker:)
     puts "POWER UP GRAB BAG"
     puts "#{attacker.first_name}, Choose your powerup!"
