@@ -1,6 +1,5 @@
 class Player
   attr_reader :first_name
-
   def initialize(args)
     @first_name = args[:first_name].capitalize
   end

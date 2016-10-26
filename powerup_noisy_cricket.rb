@@ -14,7 +14,7 @@ class NoisyCricket < PowerUps
   end
 
   def damage_to_s
-    "10-20"
+    "15-20"
   end
 
   def post_initialize
