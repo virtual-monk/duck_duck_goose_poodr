@@ -38,15 +38,15 @@ class Racer
   end
 
   def trinket
-    [["Pheonix feathers", 1],["Speed potions", 2],["Unicorn hairs", 3], ["Pocket lint", 0]]
+    [["Pheonix feathers", 1], ["Speed potions", 2], ["Unicorn hairs", 3], ["Pocket lint", 0]]
   end
 
   def armor
-    [["Flash's suit", 1],["Superman's cape", 2],["Daedric armor", 3], ["A Nickelback t-shirt", 0]]
+    [["Flash's suit", 1], ["Superman's cape", 2], ["Daedric armor", 3], ["A Nickelback t-shirt", 0]]
   end
 
   def shoes
-    [["Hermes' wingtips", 1],["Sonic's boots", 2],["QuickSilver's shoes", 3], ["Worn-out chucks", 0]]
+    [["Hermes' wingtips", 1], ["Sonic's boots", 2], ["QuickSilver's shoes", 3], ["Worn-out chucks", 0]]
   end
 
   def speed_bonus

@@ -12,7 +12,6 @@ class Supplies
   end
 
   def gear_names
-    # binding.pry
     names = supplies.collect {|gear| gear.name}
     return "#{names[0]}, #{names[1]}, and #{names[2]}"
   end
